@@ -2,15 +2,15 @@
   <div class="w-full px-1 sm:p-0">
     <div
       ref="videoContainer"
-      class="relative mt-10 shadow-sm ring-1 ring-primary-500 ring-opacity-25 bg-gray-100 transition mx-auto overflow-hidden"
+      class="relative mt-10 aspect-square w-full h-full shadow-sm ring-1 ring-primary-500 ring-opacity-25 bg-gray-100 transition max-w-[500px] max-h-[500px] rounded-full mx-auto overflow-hidden"
     >
       <Transition name="fade">
         <video
-          v-show="true"
+          v-show="displayFeed"
           ref="videoElement"
           disable-picture-in-picture="true"
           muted
-          class="z-10 w-full h-full"
+          class="object-cover absolute inset-0 z-10 w-full h-full rounded-full"
           width="100%"
           height="100%"
           crossorigin="anonymous"
@@ -26,9 +26,9 @@
           'border-red-400': detectionError === true,
         }"
       ></div>
-      <div v-show="true" class="face-circle circle-overlay z-40"></div>
+      <div v-show="displayFeed" class="face-circle circle-overlay z-40"></div>
       <canvas
-        v-show="true"
+        v-show="false"
         ref="canvasElement"
         class="ring-2 ring-black z-40"
         :class="
@@ -68,7 +68,7 @@ let ctx = $ref<CanvasRenderingContext2D>();
 
 let displayFeed = $ref(false);
 
-const takePhoto = $ref(true);
+const takePhoto = $ref(false);
 
 onMounted(async () => {
   try {
@@ -210,6 +210,6 @@ const handleDetections = (faceDetections: Detection[]) => {
   width: 95.5%;
   height: 95.5%;
   border-radius: 50%;
-  box-shadow: 0px 0px 0px 2000px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 0px 2000px rgba(0, 0, 0, 0.15);
 }
 </style>
