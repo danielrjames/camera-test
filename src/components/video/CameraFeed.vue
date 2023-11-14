@@ -1,14 +1,11 @@
 <template>
   <div class="w-full px-1 sm:p-0">
-    <Transition name="fade">
-      <video
-        v-show="displayFeed"
-        ref="videoElement"
-        disable-picture-in-picture="true"
-        muted
-        class="w-full h-full"
-      />
-    </Transition>
+    <video
+      ref="videoElement"
+      disable-picture-in-picture="true"
+      muted
+      class="w-full h-full"
+    />
     <div
       ref="videoContainer"
       class="relative aspect-square w-full h-full shadow-sm ring-1 ring-primary-500 ring-opacity-25 bg-gray-100 transition max-w-[500px] max-h-[500px] rounded-full mx-auto overflow-hidden"
