@@ -85,12 +85,12 @@ let displayFeed = $ref(false);
 const takePhoto = $ref(false);
 
 onMounted(async () => {
-  ctx = canvasElement.getContext('2d');
-
   try {
-    await camera.start();
+    ctx = canvasElement.getContext('2d');
 
     await initMediaPipe();
+
+    await camera.start();
 
     videoElement.srcObject = stream;
 
