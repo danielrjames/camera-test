@@ -81,9 +81,9 @@ let displayFeed = $ref(false);
 const takePhoto = $ref(false);
 
 onMounted(async () => {
-  try {
-    ctx = canvasElement.getContext('2d');
+  ctx = canvasElement.getContext('2d');
 
+  try {
     await camera.start();
 
     await initMediaPipe();
