@@ -72,6 +72,8 @@ onMounted(async () => {
       setTimeout(() => videoElement.play(), 100);
     }
 
+    ctx = canvasElement.getContext('2d');
+
     await initMediaPipe();
 
     await camera.start();
@@ -79,8 +81,6 @@ onMounted(async () => {
     videoElement.srcObject = stream;
 
     videoElement.onloadedmetadata = () => {
-      ctx = canvasElement.getContext('2d');
-
       videoElement.play();
 
       displayFeed = true;
