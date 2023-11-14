@@ -34,6 +34,9 @@
         "
       ></canvas>
     </div>
+    <div v-if="err !== null">
+      {{ err }}
+    </div>
   </div>
 </template>
 
@@ -56,6 +59,8 @@ const faceDetection = useFaceDetection();
 
 const { stream } = $(camera);
 const { detecting, detectionError, init } = $(faceDetection);
+
+let err = $ref(null);
 
 const videoContainer = $ref<HTMLElement>();
 const videoElement = $ref<HTMLVideoElement>();
@@ -84,7 +89,7 @@ onMounted(async () => {
       analyzeFeed();
     };
   } catch (error) {
-    // show error
+    err = error;
   }
 });
 
