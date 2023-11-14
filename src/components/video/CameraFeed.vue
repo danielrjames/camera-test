@@ -74,9 +74,9 @@ onMounted(async () => {
 
     ctx = canvasElement.getContext('2d');
 
-    await initMediaPipe();
-
     await camera.start();
+
+    await initMediaPipe();
 
     videoElement.srcObject = stream;
 
