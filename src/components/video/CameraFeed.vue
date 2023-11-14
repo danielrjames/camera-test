@@ -68,10 +68,6 @@ const takePhoto = $ref(false);
 
 onMounted(async () => {
   try {
-    if (videoElement !== null) {
-      setTimeout(() => videoElement.play(), 100);
-    }
-
     ctx = canvasElement.getContext('2d');
 
     await camera.start();
