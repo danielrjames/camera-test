@@ -1,31 +1,22 @@
 <template>
   <div class="w-full px-1 sm:p-0">
-    <Transition name="fade">
-      <video
-        v-show="displayFeed"
-        ref="videoElement"
-        disable-picture-in-picture="true"
-        muted
-        class="w-full h-full"
-        width="100%"
-        height="100%"
-        crossorigin="anonymous"
-        playsinline
-      />
-    </Transition>
     <div
       ref="videoContainer"
       class="relative aspect-square w-full h-full shadow-sm ring-1 ring-primary-500 ring-opacity-25 bg-gray-100 transition max-w-[500px] max-h-[500px] rounded-full mx-auto overflow-hidden"
     >
-      <!-- <Transition name="fade">
+      <Transition name="fade">
         <video
           v-show="displayFeed"
           ref="videoElement"
           disable-picture-in-picture="true"
           muted
           class="object-cover absolute inset-0 z-10 w-full h-full rounded-full"
+          width="100%"
+          height="100%"
+          crossorigin="anonymous"
+          playsinline
         />
-      </Transition> -->
+      </Transition>
       <div
         v-show="displayFeed"
         class="face-circle z-50 border-4 border-dashed rounded-full transition-colors"
@@ -46,9 +37,6 @@
             : 'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'
         "
       ></canvas>
-    </div>
-    <div v-if="err !== null">
-      {{ err }}
     </div>
   </div>
 </template>
@@ -73,8 +61,6 @@ const faceDetection = useFaceDetection();
 const { stream } = $(camera);
 const { detecting, detectionError, init } = $(faceDetection);
 
-let err = $ref(null);
-
 const videoContainer = $ref<HTMLElement>();
 const videoElement = $ref<HTMLVideoElement>();
 const canvasElement = $ref<HTMLCanvasElement>();
@@ -86,9 +72,9 @@ const takePhoto = $ref(false);
 
 onMounted(async () => {
   try {
-    ctx = canvasElement.getContext('2d');
-
     await initMediaPipe();
+
+    ctx = canvasElement.getContext('2d');
 
     await camera.start();
 
@@ -102,7 +88,7 @@ onMounted(async () => {
       analyzeFeed();
     };
   } catch (error) {
-    err = error;
+    // show error
   }
 });
 
