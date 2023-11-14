@@ -76,9 +76,9 @@ onMounted(async () => {
 
     videoElement.srcObject = stream;
 
-    videoElement.onloadedmetadata = () => {
-      videoElement.play();
+    videoElement.play();
 
+    videoElement.onloadedmetadata = () => {
       displayFeed = true;
 
       analyzeFeed();
