@@ -1,0 +1,102 @@
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fadeFast-enter-active,
+.fadeFast-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.fadeFast-enter-from,
+.fadeFast-leave-to {
+  opacity: 0;
+}
+
+.fadeFaster-enter-active,
+.fadeFaster-leave-active {
+  transition: opacity 0.15s;
+}
+.fadeFaster-enter-from,
+.fadeFaster-leave-to {
+  opacity: 0;
+}
+
+.fadeIn-enter-active {
+  transition: opacity 1.5s;
+}
+.fadeIn-leave-active {
+  transition: opacity 0.5s;
+}
+.fadeIn-enter-from,
+.fadeIn-leave-to {
+  opacity: 0;
+}
+
+.slide-enter-active {
+  transition: all 0.6s ease-out;
+}
+.slide-leave-active {
+  transition: all 0.6s ease-in;
+}
+.slide-enter-from,
+.slide-leave-to {
+  transition: all 0.6s ease-in;
+  transform: translateX(550px);
+  opacity: 1;
+}
+
+/* button loading */
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.btn-loading:after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid rgba(194, 190, 190, 0.35);
+  border-top-color: #fff;
+  animation: spinner 0.5s linear infinite;
+}
+
+.btn.btn-loading:after {
+  top: calc(50% + 1px);
+  right: 8%;
+  width: 17px;
+  height: 17px;
+}
+
+.btn.btn-md.btn-loading:after {
+  right: 10%;
+}
+
+.btn.btn-sm.btn-loading:after,
+.btn-xs.btn-loading:after {
+  right: 8%;
+}
+
+.btn-xs.btn-loading:after {
+  top: calc(50% + 2px);
+  right: 8%;
+  width: 16px;
+  height: 16px;
+}
+
+.btn-stretch.btn-loading:after {
+  left: 50%;
+}
